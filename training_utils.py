@@ -40,7 +40,7 @@ def setup_logger(config):
             project=config.settings.project_name,
             name=config.settings.experiment_name,
         )
-	logger = wandb_logger
+        logger = wandb_logger
     else:
-	logger = None
+        logger = None
     return logger
