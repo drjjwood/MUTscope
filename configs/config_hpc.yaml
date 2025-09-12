@@ -1,7 +1,7 @@
 settings:
     seed: 42
     track_wb: True
-    wandb_key: "52e8842d3770e3d2a38887f8e63ff7d677774087"
+    wandb_key: 
     project_name: full_comparison2
     experiment_name: 1stchef3_ran_esm2_mlp1lyr
     run_sweep: False
