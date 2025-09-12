@@ -1,0 +1,30 @@
+settings:
+    seed: 42
+    track_wb: False
+    project_name: predictions
+    experiment_name: test_predictions
+    run_sweep: False
+    embedding_type: 'esm2'
+    randomised_control_run: False
+
+dataset:
+    input_path: '/tests'
+    train_file_name : None
+    test_file_name : None
+    val_file_name : None
+    predict_file_name : 'example_dms' #if dms=True this is save path, it will not save over if exisitng!!!
+    save_path: '/outputs'
+    loader_batch_size: 16
+    num_workers: 8
+
+model:
+    load_path: '/AMR-collective/best_model_fp32.pt'
+    classifier_head: 'MLP1lyr' 
+    save_path: '/outputs'
+    embedding_size: 5121
+    threshold: 0.3
+
+predictions:
+    dms: True
+    fasta_file_name: 'example_dms' # Your file name 
+    interpretation: True

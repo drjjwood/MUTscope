@@ -1,0 +1,75 @@
+settings:
+    seed: 42
+    track_wb: True
+    wandb_key: "52e8842d3770e3d2a38887f8e63ff7d677774087"
+    project_name: full_comparison2
+    experiment_name: 1stchef3_ran_esm2_mlp1lyr
+    run_sweep: False
+    embedding_type: 'esm2'
+    randomised_control_run: False
+
+dataset:
+    disable_cache: False
+    #cross_val:
+    #    nfolds: 5
+    input_path: '/home/lshjw7/AMR_collective/datasets/20250618_1536/random' 
+    #input_path: '/home/lshjw7/Mut-collective/outputs/testing_esm2_mlp1lyr'
+    train_file_name : 'train_fold_3'
+    test_file_name : 'test_set'
+    val_file_name : 'val_fold_3'
+    save_path: '/home/lshjw7/Mut-collective/outputs'
+    loader_batch_size: 16
+    num_workers: 8
+
+pca:
+    dim_reduction: False
+    n_components: 50
+
+model:
+    classifier_head: 'MLP1lyr' # CNN, MLP1lyr, MLP2lyr, GBC, LR, SVC
+    save_path: '/home/lshjw7/Mut-collective/outputs'
+    #num_hidden1: 128
+    #num_hidden2: 64
+    threshold: 0.3
+
+trainer:
+    max_epochs: 100
+    log_every_n_steps: 10
+    fast_dev_run: False
+    profiler: 'simple'
+    accelerator: 'gpu'
+    strategy: 'deepspeed' #"ddp" for Distributed Data Parallel, 1 device below for single GPU
+    devices: 1
+    num_nodes: 1
+    num_sanity_val_steps: 0
+    precision: "16-mixed"
+
+predictions:
+    interpretation: False
+
+sweep:
+    method: random
+    metric:
+        name: val_loss
+        goal: minimize
+    run_cap: 25 #250
+    parameters:
+        num_hidden1:
+            values: [128, 256, 512, 1024]
+        num_hidden2:
+            values: [64, 128, 256, 512]
+        lr:
+            values: [1e-8, 1e-6, 1e-4, 1e-2]
+        max_epochs:
+            values: [10, 20, 30]
+        dropout:
+            values: [0.2, 0.4, 0.6]
+        weight_decay:
+            values: [0.0, 1e-6, 1e-4, 1e-2]
+        optimizer:
+            values: ["adam", "adamw"]
+        scheduler:
+            values: ["step", "cosine_annealing"]
+        lr_decay:
+            values: [0.1, 0.5]
+        

@@ -1,0 +1,69 @@
+settings:
+    seed: 42                     # Set random seed for reproducibility
+    track_wb: True               # Enable Weights & Biases logging
+    wandb_key: 'YOUR_WANDB_API_KEY' #insert personal key
+    project_name: mut_collective_project
+    experiment_name: exp_mlp_esm2
+    run_sweep: False             # Set to True if using hyperparameter sweeps
+    embedding_type: 'esm2'         # Options: esm2, esm1b
+    randomised_control_run: False  # Set True to randomize labels (for null model control)
+
+dataset:
+    disable_cache: False            # Set True to disable caching
+    input_path: 'tests/'        # Directory containing your CSV files
+    train_file_name: 'train_example' # note dont include extension .csv
+    val_file_name: 'val_example'
+    test_file_name: 'test_example'
+    save_path: 'outputs/'          # Where outputs, models, and logs are stored
+    loader_batch_size: 16
+    num_workers: 8
+
+pca:
+    dim_reduction: False         # Enable PCA f embeddings BEFORE training
+    n_components: 50             # Number of components if PCA enabled
+
+model:
+    classifier_head: 'MLP1lyr'     # Options: MLP1lyr, MLP2lyr, CNN, GBC, LR, SVC
+    save_path: 'outputs/'
+    threshold: 0.3               # Classification threshold (e.g., 0.3)
+
+trainer:
+    max_epochs: 50
+    log_every_n_steps: 10
+    fast_dev_run: False
+    profiler: 'simple'
+    accelerator: 'gpu'
+    strategy: 'deepspeed'          # Options: deepspeed, ddp, etc.
+    devices: 1
+    num_nodes: 1
+    num_sanity_val_steps: 0
+    precision: '16-mixed'
+
+predictions:
+    interpretation: False        # Run interpretation after training
+
+sweep:
+    method: random
+    metric:
+      name: val_loss
+      goal: minimize
+    run_cap: 100
+    parameters:
+      num_hidden1:
+        values: [128, 256, 512, 1024]
+      num_hidden2:
+        values: [64, 128, 256, 512]
+      lr:
+        values: [1e-8, 1e-6, 1e-4, 1e-2]
+      max_epochs:
+        values: [10, 20, 30]
+      dropout:
+        values: [0.2, 0.4, 0.6]
+      weight_decay:
+        values: [0.0, 1e-6, 1e-4, 1e-2]
+      optimizer:
+        values: [adam, adamw]
+      scheduler:
+        values: [step, cosine_annealing]
+      lr_decay:
+        values: [0.1, 0.5]
