@@ -8,13 +8,14 @@ dependencies:
   - python=3.10
   - numpy
   - pandas
-  - scikit-learn
+  - scikit-learn=1.4.2
   - matplotlib
   - seaborn
   - tqdm
   - requests
   - ipykernel
   - jupyterlab
+  - pyyaml 
 
   # PyTorch CPU stack
   - pytorch=2.5.1
@@ -33,7 +34,8 @@ dependencies:
       - lightning-utilities==0.11.9
       - huggingface-hub==0.26.5
       - py3dmol==2.4.2
-      - imbalanced-learn==0.13.0
+      - imbalanced-learn==0.12.3
       - aiohttp==3.11.11
       - easydict==1.13
+      - tensorflow==2.16.1
 

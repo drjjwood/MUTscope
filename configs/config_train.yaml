@@ -1,15 +1,15 @@
 settings:
     seed: 42                     # Set random seed for reproducibility
-    track_wb: True               # Enable Weights & Biases logging
+    track_wb: False               # Enable Weights & Biases logging
     wandb_key: 'YOUR_WANDB_API_KEY' #insert personal key
-    project_name: mut_collective_project
+    project_name: mut_scope_project
     experiment_name: exp_mlp_esm2
     run_sweep: False             # Set to True if using hyperparameter sweeps
     embedding_type: 'esm2'         # Options: esm2, esm1b
     randomised_control_run: False  # Set True to randomize labels (for null model control)
 
 dataset:
-    disable_cache: False            # Set True to disable caching
+    disable_cache: True            # Set True to disable caching
     input_path: 'tests/'        # Directory containing your CSV files
     train_file_name: 'train_example' # note dont include extension .csv
     val_file_name: 'val_example'
