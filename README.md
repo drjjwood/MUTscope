@@ -2,7 +2,7 @@
 
 MUTscope is a flexible, modular pipeline for training and evaluating machine learning models for predicting the effects of single amino acid substitutions (currently for binary clssification problems). Designed to be  model-agnostic, it enables end-to-end training from raw sequences to interpretable outputs. This framework supports multiple classifier heads (MLP, CNN, etc.), and extensible interpretability modules including in silico deep mutational scanning (DMS) and 3D residue-level insights.
 
-AMRscope is a trained instance of MUTscope using anti-microbial resistance data. Below are instructions for predicting using AMRscope or training your own model instance using MUTscope pipeline. This repository accompanies the manuscript [link-to-preprint]. Full AMRscope data sources, OOD splits, baselines, and calibration analysis are detailed there. 
+**AMRscope** is a trained instance of MUTscope using anti-microbial resistance data. Below are instructions for predicting using AMRscope or training your own model instance using MUTscope pipeline. This repository accompanies the manuscript [link-to-preprint]. Full AMRscope data sources, OOD splits, baselines, and calibration analysis are detailed there. 
 
 ---
 
@@ -106,7 +106,7 @@ If you are running full DMS then you can run the interpretation notebook in AMRs
 
 Step 1. Setup your data .csv file with mutations as described in 'Data format' section below (you can also look at tests/test_example.csv for a template)
 
-Step 2. Setup your config, you can use configs/config_predict.yaml as a template. All the fields are described in detail in the Configuration Guide below. However, as a minimal start point you should add your train/val/test file names. 
+Step 2. Setup your config, you can use configs/config_train.yaml as a template. All the fields are described in detail in the Configuration Guide below. However, as a minimal start point you should add your train/val/test file names. 
 
 Step 3. Run training
 
