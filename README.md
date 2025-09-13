@@ -70,7 +70,7 @@ Below describes how to run 1)prediction and 2)training pipelines. If you are hav
 
 ### 1. 🔮 PREDICTION ONLY PIPELINE with AMRscope
 
-- Step 1. Download the AMRscope model from OSF and place in AMRscope folder
+- Step 1. Download the best model from [[OSF](https://osf.io/pekan/)] and place in AMRscope folder
 
 - Step 2. Setup your data, this can either be for predictions of a) specific mutations or b) in silico DMS of a given proten as follows;
 
