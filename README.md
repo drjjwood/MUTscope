@@ -2,7 +2,7 @@
 
 MUTscope is a flexible, modular pipeline for training and evaluating machine learning models for predicting the effects of single amino acid substitutions (currently for binary clssification problems). Designed to be  model-agnostic, it enables end-to-end training from raw sequences to interpretable outputs. This framework supports multiple classifier heads (MLP, CNN, etc.), and extensible interpretability modules including in silico deep mutational scanning (DMS) and 3D residue-level insights.
 
-**AMRscope** is a trained instance of MUTscope using anti-microbial resistance data. Below are instructions for predicting using AMRscope or training your own model instance using MUTscope pipeline. This repository accompanies the manuscript [link-to-preprint]. Full AMRscope data sources, OOD splits, baselines, and calibration analysis are detailed there. 
+**AMRscope** is a trained instance of MUTscope using anti-microbial resistance data. Below are instructions for predicting using AMRscope or training your own model instance using MUTscope pipeline. This repository accompanies a manuscript [[preprint](https://www.biorxiv.org/content/10.1101/2025.09.12.672331v1)], full AMRscope data sources, OOD splits, baselines, and calibration analysis are detailed there. 
 
 ---
 
