@@ -18,7 +18,7 @@ dataset:
     num_workers: 8
 
 model:
-    load_path: '/AMR-collective/best_model_fp32.pt'
+    load_path: '/AMRscope/best_model_fp32.pt'
     classifier_head: 'MLP1lyr' 
     save_path: '/outputs'
     embedding_size: 5121
